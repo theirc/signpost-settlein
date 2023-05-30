@@ -7,7 +7,6 @@ import {
 import {
   CategoryWithSections,
   ZendeskCategory,
-  getArticle,
   getCategories,
   getCategoriesWithSections,
   getTranslationsFromDynamicContent,
@@ -16,7 +15,6 @@ import { GetStaticProps } from 'next';
 import getConfig from 'next/config';
 
 import {
-  ABOUT_US_ARTICLE_ID,
   CATEGORIES_TO_HIDE,
   CATEGORY_ICON_NAMES,
   GOOGLE_ANALYTICS_IDS,
@@ -124,14 +122,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     );
   }
 
-  const aboutUsArticle = await getArticle(
-    currentLocale,
-    ABOUT_US_ARTICLE_ID,
-    getZendeskUrl(),
-    getZendeskMappedUrl(),
-    ZENDESK_AUTH_HEADER
-  );
-
   const menuOverlayItems = getMenuItems(
     populateMenuOverlayStrings(dynamicContent),
     categories,
@@ -144,10 +134,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   );
 
   const strings = populateSearchResultsPageStrings(dynamicContent);
-  const footerLinks = getFooterItems(
-    populateMenuOverlayStrings(dynamicContent),
-    categories
-  );
+
   return {
     props: {
       currentLocale,
