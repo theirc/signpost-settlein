@@ -19,3 +19,24 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.footer--background-color {
+  background-color: #434343 !important;
+}
+
+.footer-disclaimer {
+  color: white;
+}
+
+.footer .ant-dropdown-trigger {
+  color: white !important;
+  text-transform: uppercase;
+}
+.footer a,
+.footer-linkButton {
+  color: #50a684 !important;
+}
+
+.footer .ant-space-item:last-of-type {
+  color: white;
+}
