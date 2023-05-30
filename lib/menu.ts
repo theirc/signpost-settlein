@@ -16,19 +16,31 @@ import {
 export interface CustomMenuOverlayStrings extends MenuOverlayStrings {
   information: string;
   about: string;
+  disclaimerTitle: string;
+  disclaimerLink: string;
+  privacyTitle: string;
+  privacyLink: string;
 }
 
-// TODO Update footer items if needed.
 export function getFooterItems(
   strings: CustomMenuOverlayStrings,
   categories: ZendeskCategory[] | CategoryWithSections[]
 ): MenuOverlayItem[] {
   let items: MenuOverlayItem[] = [];
-  items.push({ key: 'home', label: strings.home, href: '/' });
+  items.push({
+    key: 'disclaimer',
+    label: strings.disclaimerTitle,
+    href: strings.disclaimerLink,
+  });
+  items.push({
+    key: 'privacy',
+    label: strings.privacyTitle,
+    href: strings.privacyLink,
+  });
+
   return items;
 }
 
-// TODO Update menu items if needed.
 export function getMenuItems(
   strings: CustomMenuOverlayStrings,
   categories: ZendeskCategory[] | CategoryWithSections[],

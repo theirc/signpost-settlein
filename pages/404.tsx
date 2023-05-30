@@ -6,6 +6,10 @@ import { MenuOverlayItem } from '@ircsignpost/signpost-base/dist/src/menu-overla
 import {
   CategoryWithSections,
   ZendeskCategory,
+  getArticle,
+  getCategories,
+  getCategoriesWithSections,
+  getTranslationsFromDynamicContent,
 } from '@ircsignpost/signpost-base/dist/src/zendesk';
 import { GetStaticProps } from 'next';
 import getConfig from 'next/config';
@@ -38,13 +42,6 @@ import {
   populateMenuOverlayStrings,
 } from '../lib/translations';
 import { getZendeskMappedUrl, getZendeskUrl } from '../lib/url';
-// TODO Use real Zendesk API implementation.
-import {
-  getArticle,
-  getCategories,
-  getCategoriesWithSections,
-  getTranslationsFromDynamicContent,
-} from '../lib/zendesk-fake';
 
 interface Custom404Props {
   currentLocale: Locale;
@@ -72,6 +69,7 @@ export default function Custom404({
       title={title}
       strings={strings}
       menuOverlayItems={menuOverlayItems}
+      footerLinks={footerLinks}
       headerLogoProps={getHeaderLogoProps(currentLocale)}
       searchBarIndex={SEARCH_BAR_INDEX}
       footerLinks={footerLinks}
@@ -130,7 +128,12 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const menuOverlayItems = getMenuItems(
     populateMenuOverlayStrings(dynamicContent),
     categories,
-    !!aboutUsArticle
+    false
+  );
+
+  const footerLinks = getFooterItems(
+    populateMenuOverlayStrings(dynamicContent),
+    categories
   );
 
   const footerLinks = getFooterItems(
@@ -144,6 +147,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       strings,
       menuOverlayItems,
       categories,
+      footerLinks,
       title: strings.errorStrings.subtitle?.concat(' - ', SITE_TITLE),
       footerLinks,
     },

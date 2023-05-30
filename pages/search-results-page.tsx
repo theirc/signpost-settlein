@@ -7,6 +7,10 @@ import {
 import {
   CategoryWithSections,
   ZendeskCategory,
+  getArticle,
+  getCategories,
+  getCategoriesWithSections,
+  getTranslationsFromDynamicContent,
 } from '@ircsignpost/signpost-base/dist/src/zendesk';
 import { GetStaticProps } from 'next';
 import getConfig from 'next/config';
@@ -40,13 +44,8 @@ import {
   populateSearchResultsPageStrings,
 } from '../lib/translations';
 import { getSiteUrl, getZendeskMappedUrl, getZendeskUrl } from '../lib/url';
+
 // TODO: import methods from '@ircsignpost/signpost-base/dist/src/zendesk' instead.
-import {
-  getArticle,
-  getCategories,
-  getCategoriesWithSections,
-  getTranslationsFromDynamicContent,
-} from '../lib/zendesk-fake';
 
 interface SearchResultsPageProps {
   currentLocale: Locale;
@@ -138,7 +137,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const menuOverlayItems = getMenuItems(
     populateMenuOverlayStrings(dynamicContent),
     categories,
-    !!aboutUsArticle
+    false
   );
 
   const footerLinks = getFooterItems(
@@ -147,7 +146,10 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   );
 
   const strings = populateSearchResultsPageStrings(dynamicContent);
-
+  const footerLinks = getFooterItems(
+    populateMenuOverlayStrings(dynamicContent),
+    categories
+  );
   return {
     props: {
       currentLocale,

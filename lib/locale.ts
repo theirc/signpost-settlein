@@ -13,14 +13,20 @@ export const LOCALES: { [key: string]: Locale } = {
     name: 'English',
     directus: 'en-US',
   },
-  // TODO
+  ps: { url: 'ps', direction: 'rtl', name: 'پښتو', directus: 'ps-PS' },
+  'fa-af': { url: 'fa-af', direction: 'rtl', name: 'درى', directus: 'fa-FA' },
+  ru: { url: 'ru', direction: 'ltr', name: 'Русский', directus: 'ru-RU' },
+  uk: { url: 'uk', direction: 'ltr', name: 'Українська ', directus: 'uk-UK' },
 };
 
 export const LOCALE_CODES_TO_CANONICAL_LOCALE_CODES: { [key: string]: string } =
   {
     en: 'en-us',
     'en-us': 'en-us',
-    // TODO
+    ps: 'ps',
+    'fa-af': 'fa-af',
+    ru: 'ru',
+    uk: 'uk',
   };
 
 // Returns the effective locale given locale code.
