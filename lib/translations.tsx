@@ -72,6 +72,10 @@ export const COMMON_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_friday_label',
   'default_saturday_label',
   'default_sunday_label',
+  'default_menu_disclaimer_title',
+  'default_menu_privacy_policy_title',
+  'signpost_settlein_disclaimer_link',
+  'signpost_settlein_privacy_policy_link',
 ];
 
 export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
