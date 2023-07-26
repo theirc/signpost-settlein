@@ -40,3 +40,12 @@ a {
 .footer .ant-space-item:last-of-type {
   color: white;
 }
+
+.header--text-color {
+  color: black !important;
+}
+
+.locale-select-page-button-container .ant-btn.ant-btn-background-ghost {
+  color: black;
+  border-color: black;
+}

@@ -115,6 +115,14 @@ export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_populations_label',
   'default_providers_label',
   'default_service_type_label',
+  'default_service_map_all_services',
+  'DEFAULT_SERVICE_MAP_ALL_REGIONS_OPTION',
+  'DEFAULT_SERVICE_MAP_ALL_CITIES_OPTION',
+  'DEFAULT_SERVICE_MAP_ALL_CATEGORIES_OPTION',
+  'default_service_map_my_location_option',
+  'default_select_topic',
+  'default_select_subtopic',
+  'default_recent_articles_title',
 ];
 
 export const CATEGORY_PLACEHOLDERS = [
@@ -473,5 +481,16 @@ export function populateServiceContentStrings(dynamicContent: {
       Saturday: dynamicContent['default_saturday_label'],
       Sunday: dynamicContent['default_sunday_label'],
     },
+  };
+}
+
+export function populateRecentArticlesStrings(dynamicContent: {
+  [key: string]: string;
+}): RecentArticlesStrings {
+  return {
+    recentArticlesTitle: dynamicContent['default_recent_articles_title'],
+    lastUpdatedLabel: dynamicContent['default_last_updated'],
+    selectTopicLabel: dynamicContent['default_select_topic'],
+    selectSubTopicLabel: dynamicContent['default_select_subtopic'],
   };
 }
