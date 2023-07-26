@@ -453,17 +453,6 @@ export function populateFilterSelectStrings(dynamicContent: {
   };
 }
 
-export function populateRecentArticlesStrings(dynamicContent: {
-  [key: string]: string;
-}): RecentArticlesStrings {
-  return {
-    recentArticlesTitle: dynamicContent['default_recent_articles_title'],
-    lastUpdatedLabel: dynamicContent['default_last_updated'],
-    selectTopicLabel: dynamicContent['default_select_topic'],
-    selectSubTopicLabel: dynamicContent['default_select_subtopic'],
-  };
-}
-
 export function populatePopupStrings(dynamicContent: {
   [key: string]: string;
 }): PopupStrings {
@@ -517,5 +506,16 @@ export function populateServiceContentStrings(dynamicContent: {
       Saturday: dynamicContent['default_saturday_label'],
       Sunday: dynamicContent['default_sunday_label'],
     },
+  };
+}
+
+export function populateRecentArticlesStrings(dynamicContent: {
+  [key: string]: string;
+}): RecentArticlesStrings {
+  return {
+    recentArticlesTitle: dynamicContent['default_recent_articles_title'],
+    lastUpdatedLabel: dynamicContent['default_last_updated'],
+    selectTopicLabel: dynamicContent['default_select_topic'],
+    selectSubTopicLabel: dynamicContent['default_select_subtopic'],
   };
 }
