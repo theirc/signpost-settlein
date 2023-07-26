@@ -6,6 +6,7 @@ import messengerImage from '../public/messenger.svg';
 import telegramImage from '../public/telegram.svg';
 import viberImage from '../public/viber.svg';
 import whatsappImage from '../public/whatsapp.svg';
+import { Locale, getLocaleFromCode } from './locale';
 
 export interface SocialMediaLink {
   title: string;
@@ -25,9 +26,10 @@ export interface SocialMediaLinks {
  * Provides data for Social Media buttons, e.g. Facebook, Whatsapp, etc.
  */
 export function getSocialMediaProps(
-  socialMediaLinks: SocialMediaLinks
+  socialMediaLinks: SocialMediaLinks,
+  locale: Locale
 ): SocialMediaProps[] {
-  return [
+  let socialMediaProps: SocialMediaProps[] = [
     {
       ...socialMediaLinks.facebookLink,
       image: facebookImage,
@@ -37,18 +39,23 @@ export function getSocialMediaProps(
       ...socialMediaLinks.messengerLink,
       image: messengerImage,
     },
+  ];
 
-    {
-      ...socialMediaLinks.telegramLink,
-      image: telegramImage,
-    },
-    {
-      ...socialMediaLinks.whatsappLink,
-      image: whatsappImage,
-    },
-    {
+  // Site specifications are that only 'ru' and 'uk' have Viber, WhatsApp and Telegram.
+
+  if (locale.url === 'ru' || locale.url === 'uk') {
+    socialMediaProps.push({
       ...socialMediaLinks.viberLink,
       image: viberImage,
-    },
-  ];
+    });
+    socialMediaProps.push({
+      ...socialMediaLinks.whatsappLink,
+      image: whatsappImage,
+    });
+    socialMediaProps.push({
+      ...socialMediaLinks.telegramLink,
+      image: telegramImage,
+    });
+  }
+  return socialMediaProps;
 }

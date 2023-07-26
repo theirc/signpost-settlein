@@ -20,8 +20,10 @@ import {
 } from '@ircsignpost/signpost-base/dist/src/service-map-common';
 import {
   CategoryWithSections,
+  ZendeskArticle,
   ZendeskCategory,
   getArticle,
+  getArticles,
   getCategories,
   getCategoriesWithSections,
   getTranslationsFromDynamicContent,
@@ -45,6 +47,7 @@ import {
   SECTION_ICON_NAMES,
   SITE_TITLE,
   USE_CAT_SEC_ART_CONTENT_STRUCTURE,
+  USE_RECENT_ARTICLES,
   ZENDESK_AUTH_HEADER,
 } from '../lib/constants';
 import {
@@ -79,6 +82,8 @@ interface HomeProps {
   aboutUsTextHtml: string;
   categories: ZendeskCategory[] | CategoryWithSections[];
   footerLinks?: MenuOverlayItem[];
+  articles: ZendeskArticle[];
+  articleCategories: CategoryWithSections[];
 }
 
 const Home: NextPage<HomeProps> = ({
@@ -91,6 +96,8 @@ const Home: NextPage<HomeProps> = ({
   aboutUsTextHtml,
   categories,
   footerLinks,
+  articles,
+  articleCategories,
 }) => {
   const { publicRuntimeConfig } = getConfig();
 
@@ -103,13 +110,19 @@ const Home: NextPage<HomeProps> = ({
       menuOverlayItems={menuOverlayItems}
       headerBannerProps={{
         ...headerBannerStrings,
-        socialMediaData: getSocialMediaProps(socialMediaLinks),
+        socialMediaData: getSocialMediaProps(socialMediaLinks, currentLocale),
       }}
       headerLogoProps={getHeaderLogoProps(currentLocale)}
       searchBarIndex={SEARCH_BAR_INDEX}
       serviceMapProps={serviceMapProps}
       aboutUsTextHtml={aboutUsTextHtml}
       categories={categories}
+      hasRecentArticles={USE_RECENT_ARTICLES}
+      CATEGORIES_TO_HIDE={CATEGORIES_TO_HIDE}
+      CATEGORY_ICON_NAMES={CATEGORY_ICON_NAMES}
+      SECTION_ICON_NAMES={SECTION_ICON_NAMES}
+      articles={articles}
+      articleCategories={articleCategories}
       footerLinks={footerLinks}
       signpostVersion={publicRuntimeConfig?.version}
       cookieBanner={
@@ -198,6 +211,14 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     categories
   );
 
+  const articles = await getArticles(currentLocale, getZendeskUrl());
+
+  const articleCategories = await getCategoriesWithSections(
+    currentLocale,
+    getZendeskUrl(),
+    (c) => !CATEGORIES_TO_HIDE.includes(c.id)
+  );
+
   return {
     props: {
       currentLocale,
@@ -219,6 +240,8 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       categories,
       aboutUsTextHtml,
       footerLinks,
+      articles,
+      articleCategories,
     },
     revalidate: REVALIDATION_TIMEOUT_SECONDS,
   };
