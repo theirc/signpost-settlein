@@ -21,6 +21,9 @@ export const ABOUT_US_ARTICLE_ID: number = 10987680052893;
 //
 export const USE_CAT_SEC_ART_CONTENT_STRUCTURE = true;
 
+// Set to true to use Recent Articles component on Home Page
+export const USE_RECENT_ARTICLES = true;
+
 // A mapping from category ID to a Material icon for that category.
 export const CATEGORY_ICON_NAMES: { [key: string]: string } = {
   '123': 'home_work', // Placeholder
