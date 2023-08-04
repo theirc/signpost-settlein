@@ -4,6 +4,12 @@ import HomePage, {
   HomePageStrings,
 } from '@ircsignpost/signpost-base/dist/src/home-page';
 import { MenuOverlayItem } from '@ircsignpost/signpost-base/dist/src/menu-overlay';
+import { ServiceMapProps } from '@ircsignpost/signpost-base/dist/src/service-map';
+import {
+  fetchRegions,
+  fetchServices,
+  fetchServicesCategories,
+} from '@ircsignpost/signpost-base/dist/src/service-map-common';
 import {
   CategoryWithSections,
   ZendeskArticle,
@@ -60,6 +66,7 @@ interface HomeProps {
   socialMediaLinks: SocialMediaLinks;
   // A list of |MenuOverlayItem|s to be displayed in the header and side menu.
   menuOverlayItems: MenuOverlayItem[];
+  serviceMapProps: ServiceMapProps;
   // The HTML text of the About Us category shown on the home page.
   aboutUsTextHtml: string;
   categories: ZendeskCategory[] | CategoryWithSections[];
@@ -74,6 +81,7 @@ const Home: NextPage<HomeProps> = ({
   headerBannerStrings,
   socialMediaLinks,
   menuOverlayItems,
+  serviceMapProps,
   aboutUsTextHtml,
   categories,
   footerLinks,
@@ -95,6 +103,7 @@ const Home: NextPage<HomeProps> = ({
       }}
       headerLogoProps={getHeaderLogoProps(currentLocale)}
       searchBarIndex={SEARCH_BAR_INDEX}
+      serviceMapProps={serviceMapProps}
       aboutUsTextHtml={aboutUsTextHtml}
       categories={categories}
       hasRecentArticles={USE_RECENT_ARTICLES}
@@ -163,6 +172,20 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
   const strings = populateHomePageStrings(dynamicContent);
 
+  let regions = await fetchRegions(COUNTRY_ID, currentLocale.url);
+  regions.sort((a, b) => a.name.normalize().localeCompare(b.name.normalize()));
+
+  const serviceCategories = await fetchServicesCategories(
+    COUNTRY_ID,
+    currentLocale.url
+  );
+  serviceCategories.sort((a, b) =>
+    a.name.normalize().localeCompare(b.name.normalize())
+  );
+
+  const services = await fetchServices(COUNTRY_ID, currentLocale.url);
+  services.sort((a, b) => a.name.normalize().localeCompare(b.name.normalize()));
+
   const footerLinks = getFooterItems(
     populateMenuOverlayStrings(dynamicContent),
     categories
@@ -183,6 +206,13 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       menuOverlayItems,
       headerBannerStrings: populateHeaderBannerStrings(dynamicContent),
       socialMediaLinks: populateSocialMediaLinks(dynamicContent),
+      serviceMapProps: {
+        regions,
+        serviceCategories,
+        services,
+        defaultCoords: MAP_DEFAULT_COORDS,
+        shareButton: getShareButtonStrings(dynamicContent),
+      },
       categories,
       aboutUsTextHtml,
       footerLinks,
