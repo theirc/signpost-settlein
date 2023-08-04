@@ -1,6 +1,6 @@
-# TODO: Add your site's name
+SettleIn
 
-TODO: Briefly describe your site
+Signpost Settle In
 
 ## Development environment setup
 

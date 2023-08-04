@@ -45,8 +45,6 @@ import {
 } from '../lib/translations';
 import { getSiteUrl, getZendeskMappedUrl, getZendeskUrl } from '../lib/url';
 
-// TODO: import methods from '@ircsignpost/signpost-base/dist/src/zendesk' instead.
-
 interface SearchResultsPageProps {
   currentLocale: Locale;
   strings: SearchResultsPageStrings;

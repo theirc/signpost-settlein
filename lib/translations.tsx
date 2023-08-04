@@ -52,8 +52,8 @@ export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'signpost_settlein_mission_statement',
   'default_banner_social_media_title',
   'default_banner_social_media_description',
-  'default_banner_facebook_title',
-  'default_banner_messenger_title',
+  'signpost_settlein_banner_facebook_title',
+  'signpost_settlein_banner_messenger_title',
   'default_banner_whatsapp_title',
   'default_banner_viber_title',
   'default_banner_telegram_title',
@@ -114,7 +114,7 @@ export function populateSocialMediaLinks(dynamicContent: {
 }): SocialMediaLinks {
   return {
     facebookLink: {
-      title: dynamicContent['default_banner_facebook_title'],
+      title: dynamicContent['signpost_settlein_banner_facebook_title'],
       href: dynamicContent['signpost_settlein_facebook_link'],
     },
     whatsappLink: {
@@ -122,7 +122,7 @@ export function populateSocialMediaLinks(dynamicContent: {
       href: dynamicContent['signpost_settlein_whatsapp_link'],
     },
     messengerLink: {
-      title: dynamicContent['default_banner_messenger_title'],
+      title: dynamicContent['signpost_settlein_banner_messenger_title'],
       href: dynamicContent['signpost_settlein_messenger_link'],
     },
     viberLink: {
