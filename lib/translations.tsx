@@ -13,7 +13,6 @@ import { SearchBarStrings } from '@ircsignpost/signpost-base/dist/src/search-bar
 import { SearchResultsPageStrings } from '@ircsignpost/signpost-base/dist/src/search-results-page';
 import { SearchResultsStrings } from '@ircsignpost/signpost-base/dist/src/search-results-page-content';
 import { SectionStrings } from '@ircsignpost/signpost-base/dist/src/section-page';
-import { ServiceMapStrings } from '@ircsignpost/signpost-base/dist/src/service-map';
 import { ShareButtonStrings } from '@ircsignpost/signpost-base/dist/src/share-button';
 
 import { CustomMenuOverlayStrings } from './menu';
@@ -147,31 +146,6 @@ export function populateHeaderBannerStrings(dynamicContent: {
   };
 }
 
-export function populateServiceMapStrings(dynamicContent: {
-  [key: string]: string;
-}): ServiceMapStrings {
-  return {
-    title: dynamicContent['default_service_map_title'],
-    description: dynamicContent['default_service_map_description'],
-    selectRegionTitle: dynamicContent['default_service_map_select_region'],
-    regionDefaultValue: dynamicContent['default_service_map_all_regions'],
-    selectCityTitle: dynamicContent['default_service_map_select_city'],
-    cityDefaultValue: dynamicContent['default_service_map_all_cities'],
-    selectServiceTitle: dynamicContent['default_service_map_all_services'],
-    serviceDefaultValue: dynamicContent['default_service_map_select_services'],
-    serviceListStringOf: dynamicContent['default_services_list_count_of'],
-    serviceListStringServices:
-      dynamicContent['default_services_list_count_services'],
-    mapTab: dynamicContent['default_service_map_map_tab'],
-    listTab: dynamicContent['default_service_map_list_tab'],
-    allRegionsOption: dynamicContent['DEFAULT_SERVICE_MAP_ALL_REGIONS_OPTION'],
-    allCitiesOption: dynamicContent['DEFAULT_SERVICE_MAP_ALL_CITIES_OPTION'],
-    allCategoriesOption:
-      dynamicContent['DEFAULT_SERVICE_MAP_ALL_CATEGORIES_OPTION'],
-    myLocationOption: dynamicContent['default_service_map_my_location_option'],
-  };
-}
-
 /** Populate localized categories section strings from Dynamic content. */
 export function populateCategoriesSectionStrings(dynamicContent: {
   [key: string]: string;
@@ -282,7 +256,6 @@ export function populateHomePageStrings(dynamicContent: {
   return {
     cardsListStrings: populateCategoriesSectionStrings(dynamicContent),
     cookieBannerStrings: populateCookieBannerStrings(dynamicContent),
-    serviceMapStrings: populateServiceMapStrings(dynamicContent),
     searchBarStrings: populateSearchBarStrings(dynamicContent),
     footerStrings: populateFooterStrings(dynamicContent),
     recentArticlesStrings: populateRecentArticlesStrings(dynamicContent),
