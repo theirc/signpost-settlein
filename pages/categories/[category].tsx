@@ -9,7 +9,6 @@ import { MenuItem } from '@ircsignpost/signpost-base/dist/src/select-menu';
 import { Section } from '@ircsignpost/signpost-base/dist/src/topic-with-articles';
 import {
   getArticle,
-  getArticlesForSection,
   getCategories,
   getTranslationsFromDynamicContent,
 } from '@ircsignpost/signpost-base/dist/src/zendesk';
@@ -41,7 +40,6 @@ import {
   COMMON_DYNAMIC_CONTENT_PLACEHOLDERS,
   getLastUpdatedLabel,
   populateCategoryStrings,
-  populateFilterSelectStrings,
   populateMenuOverlayStrings,
 } from '../../lib/translations';
 import { getZendeskMappedUrl, getZendeskUrl } from '../../lib/url';
