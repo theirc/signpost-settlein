@@ -100,6 +100,30 @@ export const COMMON_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_menu_privacy_policy_title',
   'signpost_settlein_disclaimer_link',
   'signpost_settlein_privacy_policy_link',
+  // Service Content strings.
+  'default_opening_hours_label',
+  'default_address_label',
+  'default_description_label',
+  'default_banner_email_title',
+  'default_banner_facebook_title',
+  'default_banner_instagram_title',
+  'default_linkedin_label',
+  'default_banner_whatsapp_title',
+  'default_banner_telegram_title',
+  'default_banner_tiktok_title',
+  'default_banner_twitter_title',
+  'default_banner_viber_title',
+  'default_skype_label',
+  'default_signal_label',
+  'default_banner_telephone_title',
+  'default_linkedin_label',
+  'default_monday_label',
+  'default_tuesday_label',
+  'default_wednesday_label',
+  'default_thursday_label',
+  'default_friday_label',
+  'default_saturday_label',
+  'default_sunday_label',
 ];
 
 export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
@@ -366,6 +390,17 @@ export function populateHomePageStrings(dynamicContent: {
   };
 }
 
+export function populateRecentArticlesStrings(dynamicContent: {
+  [key: string]: string;
+}): RecentArticlesStrings {
+  return {
+    recentArticlesTitle: dynamicContent['default_recent_articles_title'],
+    lastUpdatedLabel: dynamicContent['default_last_updated'],
+    selectTopicLabel: dynamicContent['default_select_topic'],
+    selectSubTopicLabel: dynamicContent['default_select_subtopic'],
+  };
+}
+
 export function populateSearchBarStrings(dynamicContent: {
   [key: string]: string;
 }): SearchBarStrings {
@@ -506,16 +541,5 @@ export function populateServiceContentStrings(dynamicContent: {
       Saturday: dynamicContent['default_saturday_label'],
       Sunday: dynamicContent['default_sunday_label'],
     },
-  };
-}
-
-export function populateRecentArticlesStrings(dynamicContent: {
-  [key: string]: string;
-}): RecentArticlesStrings {
-  return {
-    recentArticlesTitle: dynamicContent['default_recent_articles_title'],
-    lastUpdatedLabel: dynamicContent['default_last_updated'],
-    selectTopicLabel: dynamicContent['default_select_topic'],
-    selectSubTopicLabel: dynamicContent['default_select_subtopic'],
   };
 }

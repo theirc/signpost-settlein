@@ -91,7 +91,6 @@ export default function Category({
         />
       }
       strings={strings}
-      footerLinks={footerLinks}
       signpostVersion={publicRuntimeConfig?.version}
     />
   );
@@ -241,11 +240,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     populateMenuOverlayStrings(dynamicContent),
     categories,
     false
-  );
-
-  const footerLinks = getFooterItems(
-    populateMenuOverlayStrings(dynamicContent),
-    categories
   );
 
   const footerLinks = getFooterItems(
