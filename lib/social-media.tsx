@@ -3,7 +3,10 @@ import { SocialMediaProps } from '@ircsignpost/signpost-base/dist/src/header-ban
 
 import facebookImage from '../public/facebook.svg';
 import messengerImage from '../public/messenger.svg';
+import telegramImage from '../public/telegram.svg';
+import viberImage from '../public/viber.svg';
 import whatsappImage from '../public/whatsapp.svg';
+import { Locale, getLocaleFromCode } from './locale';
 
 export interface SocialMediaLink {
   title: string;
@@ -13,31 +16,46 @@ export interface SocialMediaLink {
 // Serializable social media links
 export interface SocialMediaLinks {
   facebookLink: SocialMediaLink;
-  whatsappLink: SocialMediaLink;
   messengerLink: SocialMediaLink;
+  telegramLink: SocialMediaLink;
+  whatsappLink: SocialMediaLink;
+  viberLink: SocialMediaLink;
 }
 
 /**
  * Provides data for Social Media buttons, e.g. Facebook, Whatsapp, etc.
- *
- * TODO: You might need to add new Social media buttons or remove Facebook/Whatsapp/Messenger.
- * If so, import social media icons (or remove unused ones) under public/ dir.
  */
 export function getSocialMediaProps(
-  socialMediaLinks: SocialMediaLinks
+  socialMediaLinks: SocialMediaLinks,
+  locale: Locale
 ): SocialMediaProps[] {
-  return [
+  let socialMediaProps: SocialMediaProps[] = [
     {
       ...socialMediaLinks.facebookLink,
       image: facebookImage,
     },
-    {
-      ...socialMediaLinks.whatsappLink,
-      image: whatsappImage,
-    },
+
     {
       ...socialMediaLinks.messengerLink,
       image: messengerImage,
     },
   ];
+
+  // Site specifications are that only 'ru' and 'uk' have Viber, WhatsApp and Telegram.
+
+  if (locale.url === 'ru' || locale.url === 'uk') {
+    socialMediaProps.push({
+      ...socialMediaLinks.viberLink,
+      image: viberImage,
+    });
+    socialMediaProps.push({
+      ...socialMediaLinks.whatsappLink,
+      image: whatsappImage,
+    });
+    socialMediaProps.push({
+      ...socialMediaLinks.telegramLink,
+      image: telegramImage,
+    });
+  }
+  return socialMediaProps;
 }

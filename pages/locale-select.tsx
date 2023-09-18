@@ -7,13 +7,29 @@ import type { Lang } from '@ircsignpost/signpost-base/dist/src/locale-select-pag
 import Image from 'next/image';
 
 import { SITE_TITLE } from '../lib/constants';
+import logo from '../public/settlein-logo-lang.png';
 
 const langs: Lang[] = [
   {
     langShort: 'en-us',
     langLong: 'English',
   },
-  // TODO: Add supported languages.
+  {
+    langShort: 'fa-af',
+    langLong: 'درى',
+  },
+  {
+    langShort: 'uk',
+    langLong: 'українська',
+  },
+  {
+    langShort: 'ru',
+    langLong: 'русский',
+  },
+  {
+    langShort: 'ps',
+    langLong: 'پښتو',
+  },
 ];
 
 /** The locale selection page.
@@ -31,9 +47,11 @@ export default function LocaleSelectPage() {
   return (
     <LocaleSelectPageBase
       siteTitle={SITE_TITLE}
-      message={'Please choose your preferred language'}
+      message={
+        'Trusted and accurate information about life in the United States for newcomers.'
+      }
       langs={langs}
-      image={<span>TODO</span>}
+      image={<Image src={logo} alt="icon" />}
     />
   );
 }

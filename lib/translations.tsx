@@ -8,6 +8,7 @@ import { FooterStrings } from '@ircsignpost/signpost-base/dist/src/footer';
 import { HeaderBannerStrings } from '@ircsignpost/signpost-base/dist/src/header-banner';
 import { HomePageStrings } from '@ircsignpost/signpost-base/dist/src/home-page';
 import { CardsListStrings } from '@ircsignpost/signpost-base/dist/src/home-page-cards-list';
+import { RecentArticlesStrings } from '@ircsignpost/signpost-base/dist/src/recent-articles';
 import { SearchBarStrings } from '@ircsignpost/signpost-base/dist/src/search-bar';
 import { SearchResultsPageStrings } from '@ircsignpost/signpost-base/dist/src/search-results-page';
 import { SearchResultsStrings } from '@ircsignpost/signpost-base/dist/src/search-results-page-content';
@@ -40,25 +41,30 @@ export const COMMON_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_most_recent_filter_option',
   'default_most_popular_filter_option',
   'default_home_disclaimer',
+  'default_menu_disclaimer_title',
+  'default_menu_privacy_policy_title',
+  'signpost_settlein_disclaimer_link',
+  'signpost_settlein_privacy_policy_link',
 ];
 
 export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
   // Header banner and social media strings.
-  /*
-   * TODO: create Dynamic content ID for mission statement.
-  '<website_name>_mission_statement',
-   */
+  'signpost_settlein_mission_statement',
   'default_banner_social_media_title',
   'default_banner_social_media_description',
-  'default_banner_facebook_title',
-  'default_banner_messenger_title',
+  'signpost_settlein_banner_facebook_title',
+  'signpost_settlein_banner_messenger_title',
   'default_banner_whatsapp_title',
+  'default_banner_viber_title',
+  'default_banner_telegram_title',
+  'signpost_settlein_facebook_link',
+  'signpost_settlein_messenger_link',
+  'signpost_settlein_telegram_link',
+  'signpost_settlein_whatsapp_link',
+  'signpost_settlein_viber_link',
   // Main body strings.
   'default_information_title',
-  /*
-  //TODO: Replace and create customized dynamic content for information description.
-  '<site_prefix>_information_description',
-  */
+  'signpost_settlein_information_description',
   'default_information_description',
   'default_service_map_title',
   'default_service_map_description',
@@ -72,10 +78,13 @@ export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_service_map_map_tab',
   'default_service_map_list_tab',
   'default_service_map_all_services',
-  'default_service_map_all_regions_option',
-  'default_service_map_all_cities_option',
-  'default_service_map_all_categories_option',
+  'DEFAULT_SERVICE_MAP_ALL_REGIONS_OPTION',
+  'DEFAULT_SERVICE_MAP_ALL_CITIES_OPTION',
+  'DEFAULT_SERVICE_MAP_ALL_CATEGORIES_OPTION',
   'default_service_map_my_location_option',
+  'default_select_topic',
+  'default_select_subtopic',
+  'default_recent_articles_title',
 ];
 
 export const CATEGORY_PLACEHOLDERS = [
@@ -100,25 +109,29 @@ export const ERROR_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_error_home_button_title',
 ];
 
-// TODO: Ask your Product manager to get Social media links.
 export function populateSocialMediaLinks(dynamicContent: {
   [key: string]: string;
 }): SocialMediaLinks {
   return {
     facebookLink: {
-      title: dynamicContent['default_banner_facebook_title'],
-      // TODO: create Dynamic content with link to Facebook page
-      href: '', // dynamicContent['<site_prefix>_facebook_link']
+      title: dynamicContent['signpost_settlein_banner_facebook_title'],
+      href: dynamicContent['signpost_settlein_facebook_link'],
     },
     whatsappLink: {
       title: dynamicContent['default_banner_whatsapp_title'],
-      // TODO: create Dynamic content with link to Whatsapp page
-      href: '', // dynamicContent['<site_prefix>_whatsapp_link']
+      href: dynamicContent['signpost_settlein_whatsapp_link'],
     },
     messengerLink: {
-      title: dynamicContent['default_banner_messenger_title'],
-      // TODO: create Dynamic content with link to Messenger page
-      href: '', // dynamicContent['<site_prefix>_messenger_link']
+      title: dynamicContent['signpost_settlein_banner_messenger_title'],
+      href: dynamicContent['signpost_settlein_messenger_link'],
+    },
+    viberLink: {
+      title: dynamicContent['default_banner_viber_title'],
+      href: dynamicContent['signpost_settlein_viber_link'],
+    },
+    telegramLink: {
+      title: dynamicContent['default_banner_telegram_title'],
+      href: dynamicContent['signpost_settlein_telegram_link'],
     },
   };
 }
@@ -127,8 +140,7 @@ export function populateHeaderBannerStrings(dynamicContent: {
   [key: string]: string;
 }): HeaderBannerStrings {
   return {
-    // TODO: replace welcomeTitle with website-specific Dynamic content ID.
-    welcomeTitle: 'Welcome text.', // dynamicContent['<site_prefix>_mission_statement'],
+    welcomeTitle: dynamicContent['signpost_settlein_mission_statement'],
     socialMediaTitle: dynamicContent['default_banner_social_media_title'],
     socialMediaDescription:
       dynamicContent['default_banner_social_media_description'],
@@ -152,11 +164,16 @@ export function populateServiceMapStrings(dynamicContent: {
       dynamicContent['default_services_list_count_services'],
     mapTab: dynamicContent['default_service_map_map_tab'],
     listTab: dynamicContent['default_service_map_list_tab'],
-    allRegionsOption: dynamicContent['default_service_map_all_regions_option'],
-    allCitiesOption: dynamicContent['default_service_map_all_cities_option'],
+    allRegionsOption: dynamicContent['DEFAULT_SERVICE_MAP_ALL_REGIONS_OPTION'],
+    allCitiesOption: dynamicContent['DEFAULT_SERVICE_MAP_ALL_CITIES_OPTION'],
     allCategoriesOption:
-      dynamicContent['default_service_map_all_categories_option'],
+      dynamicContent['DEFAULT_SERVICE_MAP_ALL_CATEGORIES_OPTION'],
     myLocationOption: dynamicContent['default_service_map_my_location_option'],
+    allAccessibilitiesOption: '',
+    allPopulationsOption: '',
+    allProvidersOption: '',
+    allServicesTypeOption: '',
+    distanceAwayStrings: { informationTooltip: '' },
   };
 }
 
@@ -166,8 +183,7 @@ export function populateCategoriesSectionStrings(dynamicContent: {
 }): CardsListStrings {
   return {
     title: dynamicContent['default_information_title'],
-    //TODO: Update to the customized '<site_prefix>_information_description',
-    description: dynamicContent['default_information_description'],
+    description: dynamicContent['signpost_settlein_information_description'],
   };
 }
 
@@ -258,6 +274,10 @@ export function populateMenuOverlayStrings(dynamicContent: {
     home: dynamicContent['default_menu_home_title'],
     information: dynamicContent['default_information_title'],
     about: dynamicContent['default_menu_about_title'],
+    disclaimerTitle: dynamicContent['default_menu_disclaimer_title'],
+    disclaimerLink: dynamicContent['signpost_settlein_disclaimer_link'],
+    privacyTitle: dynamicContent['default_menu_privacy_policy_title'],
+    privacyLink: dynamicContent['signpost_settlein_privacy_policy_link'],
   };
 }
 
@@ -270,6 +290,7 @@ export function populateHomePageStrings(dynamicContent: {
     serviceMapStrings: populateServiceMapStrings(dynamicContent),
     searchBarStrings: populateSearchBarStrings(dynamicContent),
     footerStrings: populateFooterStrings(dynamicContent),
+    recentArticlesStrings: populateRecentArticlesStrings(dynamicContent),
   };
 }
 
@@ -357,5 +378,16 @@ export function populateFilterSelectStrings(dynamicContent: {
     filterLabel: dynamicContent['default_filter_label'],
     mostRecent: dynamicContent['default_most_recent_filter_option'],
     mostPopular: dynamicContent['default_most_popular_filter_option'],
+  };
+}
+
+export function populateRecentArticlesStrings(dynamicContent: {
+  [key: string]: string;
+}): RecentArticlesStrings {
+  return {
+    recentArticlesTitle: dynamicContent['default_recent_articles_title'],
+    lastUpdatedLabel: dynamicContent['default_last_updated'],
+    selectTopicLabel: dynamicContent['default_select_topic'],
+    selectSubTopicLabel: dynamicContent['default_select_subtopic'],
   };
 }
