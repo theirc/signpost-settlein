@@ -60,7 +60,6 @@ export function getMenuItems(
       href: `/articles/${ABOUT_US_ARTICLE_ID}`,
     });
   }
-
   return items;
 }
 
