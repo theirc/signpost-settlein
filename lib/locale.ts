@@ -11,7 +11,7 @@ export const LOCALES: { [key: string]: Locale } = {
   ps: { url: 'ps', direction: 'rtl', name: 'پښتو' },
   'fa-af': { url: 'fa-af', direction: 'rtl', name: 'درى' },
   ru: { url: 'ru', direction: 'ltr', name: 'Русский' },
-  uk: { url: 'uk', direction: 'ltr', name: 'Українська' },
+  uk: { url: 'uk', direction: 'ltr', name: 'Українська ' },
 };
 
 export const LOCALE_CODES_TO_CANONICAL_LOCALE_CODES: { [key: string]: string } =
