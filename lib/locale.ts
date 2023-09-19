@@ -10,8 +10,8 @@ export const LOCALES: { [key: string]: Locale } = {
   'en-us': { url: 'en-us', direction: 'ltr', name: 'English' },
   ps: { url: 'ps', direction: 'rtl', name: 'پښتو' },
   'fa-af': { url: 'fa-af', direction: 'rtl', name: 'درى' },
-  ru: { url: 'ru', direction: 'ltr', name: 'русский' },
-  uk: { url: 'uk', direction: 'ltr', name: 'українська' },
+  ru: { url: 'ru', direction: 'ltr', name: 'Русский' },
+  uk: { url: 'uk', direction: 'ltr', name: 'Українська ' },
 };
 
 export const LOCALE_CODES_TO_CANONICAL_LOCALE_CODES: { [key: string]: string } =
