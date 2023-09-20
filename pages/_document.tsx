@@ -23,6 +23,7 @@ function Document() {
           <script
             id="ze-snippet"
             src="https://static.zdassets.com/ekr/snippet.js?key=b189b7e8-a1a5-49b3-b1b2-c289f889b97d"
+            async
           >
             {' '}
           </script>
