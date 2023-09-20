@@ -19,12 +19,14 @@ function Document() {
           id="rs_req_Init"
           defer
         ></script>
-        {/*
-        TODO: get API Key from your Product manager, update src and uncomment the script.
-        <script
-          id="ze-snippet"
-          src="https://static.zdassets.com/ekr/snippet.js?key=37922dda-c8d9-441f-9a01-449297f3bb32"
-          async> </script>*/}
+        {
+          <script
+            id="ze-snippet"
+            src="https://static.zdassets.com/ekr/snippet.js?key=b189b7e8-a1a5-49b3-b1b2-c289f889b97d"
+          >
+            {' '}
+          </script>
+        }
       </Head>
       <body>
         <Main />
