@@ -72,6 +72,7 @@ export default function Custom404({
       footerLinks={footerLinks}
       headerLogoProps={getHeaderLogoProps(currentLocale)}
       searchBarIndex={SEARCH_BAR_INDEX}
+      footerLinks={footerLinks}
       signpostVersion={publicRuntimeConfig?.version}
       cookieBanner={
         <CookieBanner
@@ -135,6 +136,11 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     categories
   );
 
+  const footerLinks = getFooterItems(
+    populateMenuOverlayStrings(dynamicContent),
+    categories
+  );
+
   return {
     props: {
       currentLocale,
@@ -143,6 +149,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       categories,
       footerLinks,
       title: strings.errorStrings.subtitle?.concat(' - ', SITE_TITLE),
+      footerLinks,
     },
     revalidate: REVALIDATION_TIMEOUT_SECONDS,
   };

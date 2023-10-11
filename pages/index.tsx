@@ -175,6 +175,11 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     false
   );
 
+  const footerLinks = getFooterItems(
+    populateMenuOverlayStrings(dynamicContent),
+    categories
+  );
+
   const strings = populateHomePageStrings(dynamicContent);
 
   const directus = new Directus(DIRECTUS_INSTANCE);
@@ -194,11 +199,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const providers = await getDirectusProviders(directus, DIRECTUS_COUNTRY_ID);
   const populations = await getDirectusPopulationsServed(directus);
   const accessibility = await getDirectusAccessibility(directus);
-
-  const footerLinks = getFooterItems(
-    populateMenuOverlayStrings(dynamicContent),
-    categories
-  );
 
   const articles = await getArticles(currentLocale, getZendeskUrl());
 
