@@ -88,7 +88,6 @@ export const COMMON_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_skype_label',
   'default_signal_label',
   'default_banner_telephone_title',
-  'default_linkedin_label',
   'default_monday_label',
   'default_tuesday_label',
   'default_wednesday_label',
