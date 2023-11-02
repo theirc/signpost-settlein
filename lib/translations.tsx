@@ -323,7 +323,6 @@ export function populateHomePageStrings(dynamicContent: {
   return {
     cardsListStrings: populateCategoriesSectionStrings(dynamicContent),
     cookieBannerStrings: populateCookieBannerStrings(dynamicContent),
-    serviceMapStrings: populateServiceMapStrings(dynamicContent),
     searchBarStrings: populateSearchBarStrings(dynamicContent),
     footerStrings: populateFooterStrings(dynamicContent),
     recentArticlesStrings: populateRecentArticlesStrings(dynamicContent),
