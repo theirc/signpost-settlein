@@ -208,14 +208,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     (c) => !CATEGORIES_TO_HIDE.includes(c.id)
   );
 
-  const articles = await getArticles(currentLocale, getZendeskUrl());
-
-  const articleCategories = await getCategoriesWithSections(
-    currentLocale,
-    getZendeskUrl(),
-    (c) => !CATEGORIES_TO_HIDE.includes(c.id)
-  );
-
   return {
     props: {
       currentLocale,
