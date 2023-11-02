@@ -12,6 +12,7 @@ import HomePage, {
   HomePageStrings,
 } from '@ircsignpost/signpost-base/dist/src/home-page';
 import { MenuOverlayItem } from '@ircsignpost/signpost-base/dist/src/menu-overlay';
+import { ServiceMapProps } from '@ircsignpost/signpost-base/dist/src/service-map';
 import {
   CategoryWithSections,
   ZendeskArticle,
@@ -70,6 +71,7 @@ interface HomeProps {
   socialMediaLinks: SocialMediaLinks;
   // A list of |MenuOverlayItem|s to be displayed in the header and side menu.
   menuOverlayItems: MenuOverlayItem[];
+  serviceMapProps: ServiceMapProps;
   // The HTML text of the About Us category shown on the home page.
   aboutUsTextHtml: string;
   categories: ZendeskCategory[] | CategoryWithSections[];
@@ -84,6 +86,7 @@ const Home: NextPage<HomeProps> = ({
   headerBannerStrings,
   socialMediaLinks,
   menuOverlayItems,
+  serviceMapProps,
   aboutUsTextHtml,
   categories,
   footerLinks,
@@ -105,6 +108,7 @@ const Home: NextPage<HomeProps> = ({
       }}
       headerLogoProps={getHeaderLogoProps(currentLocale)}
       searchBarIndex={SEARCH_BAR_INDEX}
+      serviceMapProps={serviceMapProps}
       aboutUsTextHtml={aboutUsTextHtml}
       categories={categories}
       hasRecentArticles={USE_RECENT_ARTICLES}
@@ -195,6 +199,14 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const providers = await getDirectusProviders(directus, DIRECTUS_COUNTRY_ID);
   const populations = await getDirectusPopulationsServed(directus);
   const accessibility = await getDirectusAccessibility(directus);
+
+  const articles = await getArticles(currentLocale, getZendeskUrl());
+
+  const articleCategories = await getCategoriesWithSections(
+    currentLocale,
+    getZendeskUrl(),
+    (c) => !CATEGORIES_TO_HIDE.includes(c.id)
+  );
 
   const articles = await getArticles(currentLocale, getZendeskUrl());
 
