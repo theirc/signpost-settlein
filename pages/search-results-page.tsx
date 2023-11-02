@@ -138,11 +138,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     false
   );
 
-  const footerLinks = getFooterItems(
-    populateMenuOverlayStrings(dynamicContent),
-    categories
-  );
-
   const strings = populateSearchResultsPageStrings(dynamicContent);
   const footerLinks = getFooterItems(
     populateMenuOverlayStrings(dynamicContent),
