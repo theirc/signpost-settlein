@@ -237,6 +237,7 @@ export const getStaticProps: GetStaticProps = async ({
       (c) => (c.icon = CATEGORY_ICON_NAMES[c.id] || 'help_outline')
     );
   }
+
   const aboutUsArticle = await getArticle(
     currentLocale,
     ABOUT_US_ARTICLE_ID,

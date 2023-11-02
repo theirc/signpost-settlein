@@ -82,7 +82,6 @@ export default function Category({
       section={section}
       menuOverlayItems={menuOverlayItems}
       headerLogoProps={getHeaderLogoProps(currentLocale)}
-      footerLinks={footerLinks}
       searchBarIndex={SEARCH_BAR_INDEX}
       cookieBanner={
         <CookieBanner
@@ -241,11 +240,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     populateMenuOverlayStrings(dynamicContent),
     categories,
     false
-  );
-
-  const footerLinks = getFooterItems(
-    populateMenuOverlayStrings(dynamicContent),
-    categories
   );
 
   const footerLinks = getFooterItems(
