@@ -151,6 +151,10 @@ export const HOME_PAGE_DYNAMIC_CONTENT_PLACEHOLDERS = [
   'default_seach_input_text',
   'default_contact_button_label',
   'default_view_service_label',
+  'default_accessibility_label',
+  'default_populations_label',
+  'default_providers_label',
+  'default_service_type_label',
 ];
 
 export const CATEGORY_PLACEHOLDERS = [
