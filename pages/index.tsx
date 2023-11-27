@@ -12,7 +12,6 @@ import HomePage, {
   HomePageStrings,
 } from '@ircsignpost/signpost-base/dist/src/home-page';
 import { MenuOverlayItem } from '@ircsignpost/signpost-base/dist/src/menu-overlay';
-import { ServiceMapProps } from '@ircsignpost/signpost-base/dist/src/service-map';
 import {
   CategoryWithSections,
   ZendeskArticle,
