@@ -60,7 +60,7 @@ module.exports = withPWA(
           // Set height and border radius for 'default' type elements, e.g. buttons, inputs, etc.
           'height-base': '48px',
           'height-sm': '32px',
-          'border-radius-base': '10px',
+          'border-radius-base': '1px',
           'border-color-base': '#141414',
           // Set header styles.
           'layout-header-height': 'auto',
