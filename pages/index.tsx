@@ -184,7 +184,28 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     currentLocale.directus
   );
 
-  services?.sort((a, b) =>
+  const providersArray = await getDirectusProviders(
+    directus,
+    DIRECTUS_COUNTRY_ID
+  );
+
+  const uniqueProvidersIdsSet = new Set(services.flatMap((x) => x.provider.id));
+  const uniqueProvidersIdsArray = Array.from(uniqueProvidersIdsSet);
+
+  const providers = providersArray
+    .filter((x) => uniqueProvidersIdsArray.includes(x.id))
+    .sort((a, b) => a.name?.normalize().localeCompare(b.name?.normalize()));
+
+  const enhancedServices = services.map((service) => {
+    const providerDetails = providers.find(
+      (provider) => provider.id === service.provider.id
+    );
+    return providerDetails
+      ? { ...service, provider: providerDetails }
+      : service;
+  });
+
+  enhancedServices?.sort((a, b) =>
     a.name?.normalize().localeCompare(b.name?.normalize())
   );
 
@@ -207,9 +228,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const uniqueRegionsIds = new Set(services.map((service) => service.region));
 
   const uniqueCitiesIds = new Set(services.map((service) => service.city));
-
-  const uniqueProvidersIdsSet = new Set(services.flatMap((x) => x.provider.id));
-  const uniqueProvidersIdsArray = Array.from(uniqueProvidersIdsSet);
 
   const regions = await getDirectusRegions(
     Array.from(uniqueRegionsIds),
@@ -246,14 +264,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       } as DirectusServiceCategory;
     });
 
-  const providersArray = await getDirectusProviders(
-    directus,
-    DIRECTUS_COUNTRY_ID
-  );
-
-  const providers = providersArray
-    .filter((x) => uniqueProvidersIdsArray.includes(x.id))
-    .sort((a, b) => a.name?.normalize().localeCompare(b.name?.normalize()));
   const populations = await getDirectusPopulationsServed(
     uniquePopulationsIdsArray,
     directus
