@@ -294,7 +294,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       headerBannerStrings: populateHeaderBannerStrings(dynamicContent),
       socialMediaLinks: populateSocialMediaLinks(dynamicContent),
       serviceMapProps: {
-        services,
+        services: enhancedServices,
         shareButton: getShareButtonStrings(dynamicContent),
         serviceTypes,
         providers,
