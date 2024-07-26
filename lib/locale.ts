@@ -17,6 +17,7 @@ export const LOCALES: { [key: string]: Locale } = {
   'fa-af': { url: 'fa-af', direction: 'rtl', name: 'درى', directus: 'fa-FA' },
   ru: { url: 'ru', direction: 'ltr', name: 'Русский', directus: 'ru-RU' },
   uk: { url: 'uk', direction: 'ltr', name: 'Українська ', directus: 'uk-UK' },
+  es: { url: 'es', direction: 'ltr', name: 'Español', directus: 'es-ES'}
 };
 
 export const LOCALE_CODES_TO_CANONICAL_LOCALE_CODES: { [key: string]: string } =
@@ -27,6 +28,7 @@ export const LOCALE_CODES_TO_CANONICAL_LOCALE_CODES: { [key: string]: string } =
     'fa-af': 'fa-af',
     ru: 'ru',
     uk: 'uk',
+    es: 'es',
   };
 
 // Returns the effective locale given locale code.
