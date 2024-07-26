@@ -33,7 +33,7 @@ const langs: Lang[] = [
   {
     langShort: 'es',
     langLong: 'Español',
-  }
+  },
 ];
 
 /** The locale selection page.
