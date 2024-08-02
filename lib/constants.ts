@@ -59,6 +59,7 @@ export const DYNAMIC_CONTENT_LOCALES: { [key: string]: number } = {
   ps: 1348, // Pashto locale id
   ru: 27, // Russian locale id
   uk: 1173, // Ukrainian locale id
+  es: 2,
 };
 
 export const ZENDESK_AUTH_HEADER = {

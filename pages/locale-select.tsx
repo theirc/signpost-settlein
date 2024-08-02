@@ -30,6 +30,10 @@ const langs: Lang[] = [
     langShort: 'ps',
     langLong: 'پښتو',
   },
+  {
+    langShort: 'es',
+    langLong: 'Español',
+  },
 ];
 
 /** The locale selection page.
