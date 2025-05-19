@@ -43,7 +43,7 @@ export function getSocialMediaProps(
 
   // Site specifications are that only 'ru' and 'uk' have Viber, WhatsApp and Telegram.
 
-  if (locale.url === 'ru' || locale.url === 'uk') {
+  if (locale.url === 'ru' || locale.url === 'uk' || locale.url === 'en-us' || locale.url === 'ps' || locale.url === 'fa-fa' || locale.url === 'es') {
     socialMediaProps.push({
       ...socialMediaLinks.viberLink,
       image: viberImage,
